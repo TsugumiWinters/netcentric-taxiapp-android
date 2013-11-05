@@ -1,0 +1,98 @@
+ACCOUNT
+-------
+{PK} id
+
+
+TAXI
+----
+{PK} id
+{UQ} plate_number
+
+TAXI_REVISION
+-------------
+{PK} id
+{FK} id_taxi
+timestamp
+company
+
+CATEGORY
+--------
+{PK} id
+{UQ} category
+
+LEVEL (risk level)
+-----
+{PK} id
+{UQ} level
+
+SUBCATEGORY
+-----------
+{PK} id
+{FK} id_category
+{FK} id_level
+subcategory
+
+REPORT
+------
+{PK} id
+{FK} id_author
+{FK} id_taxi
+
+REPORT_REVISION
+---------------
+{PK} id
+{FK} id_report
+{FK} id_reviser
+{FK} id_subcategory
+timestamp
+driver_name
+location
+picture
+report
+n_flagged
+is_deleted
+
+COMMENT
+-------
+{PK} id
+{FK} id_author
+{FK} id_report
+
+COMMENT_REVISION
+----------------
+{PK} id
+{FK} id_comment
+{FK} id_reviser
+timestamp
+comment
+n_flagged
+is_deleted
+
+ACCOUNT_REVISION
+----------------
+{PK} id
+{FK} id_account
+timestamp
+email
+username
+type_account
+is_password_changed
+is_banned
+
+ACCOUNT_LOGIN
+-------------
+{PK, FK} id
+password
+salt
+
+FACEBOOK
+--------
+{PK} id (from facebook)
+
+FACEBOOK_ACCOUNT
+----------------
+{PK} id
+{FK} id_account
+{FK} id_facebook
+start_timestamp
+end_timestamp
